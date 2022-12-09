@@ -18,6 +18,7 @@
 + 內部類別 inner class
 + 靜態類別 static class
 + 匿名類別 anonymous class
++ 方法裡的類別
 + 類別陣列
 ### 十、抽象 abstract
 ### 十一、介面 interface
@@ -31,8 +32,9 @@
 + 重載 overloading
 + 覆寫 overwriting
 ### 十五、多型 polymorphism
-### 十六、Object 類別
-### 十七、例外 exception
-### 十八、枚舉類別 enum
-### 十九、泛型 generic
-### 二十、annotation
+### 十六、Wrapper
+### 十七、Object 類別
+### 十八、例外 exception
+### 十九、枚舉類別 enum
+### 二十、泛型 generic
+### 二十一、annotation
