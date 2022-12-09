@@ -1,17 +1,26 @@
 # 物件導向課程內容
 ### 一、實體/實例 instance
 + 類別與物件的關係
+1. 類別像設計圖，物件是依照設計圖出來的產物
+2. 類別到物件的過程叫實體化，所以物件有常說是實體
 ### 二、欄位/屬性 field
-### 三、方法/函數 method
-+ parameter
+### 三、靜態 static
+### 四、方法/函數 method
++ 參數、可變參數
 + 內外相同變數名稱的存取
-### 四、修飾子 modifier
-### 五、靜態 static
-+ 欄位/屬性 field
-+ 方法/函數 method
+1. 類別變數/靜態變數
+2. 實體變數/成員變數
+3. 方法變數
+4. 區塊變數
+### 五、修飾子 modifier
++ public protected 空 private
 ### 六、包關鍵字 package keyword
++ 唯一
 ### 七、import keyword
+1. 同包不用 import
+2. import *
 ### 八、建構子 constructor
++ 預設建構子
 + this/super
 + 靜態塊 static block
 + 塊 block
