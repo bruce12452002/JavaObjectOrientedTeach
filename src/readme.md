@@ -56,7 +56,7 @@
 ### 十六、Java API
 ### 十七、Wrapper
 1. 基本型態陣列
-2. call by value 和 call by address
+2. call by value 和 call by address [良葛格](https://www.ithome.com.tw/voice/135952)
 3. call by reference
 4. =號和物件賦值
 ### 十八、Object 類別
