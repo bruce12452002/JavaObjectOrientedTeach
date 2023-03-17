@@ -28,6 +28,7 @@
 + 內部類別 inner class
 + 靜態類別 static class
 + 匿名類別 anonymous class
++ 方法類別 method class
 > 查看 class 檔名
 + 內外相同變數名稱的存取
 1. 由內而外
