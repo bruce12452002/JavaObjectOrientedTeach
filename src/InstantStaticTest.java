@@ -22,6 +22,6 @@ public class InstantStaticTest {
         staticField1.i = 55;
         InstantStaticTest staticField2 = new InstantStaticTest();
         System.out.println(staticField1.i + ":" + staticField2.i); // 55:55
-        // 建議使用 StaticTest.i;
+        // 建議使用 InstantStaticTest.i;
     }
 }
