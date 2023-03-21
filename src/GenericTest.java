@@ -1,4 +1,5 @@
 /**
+ * 泛型不可用基本類型
  * 泛型方法可以用在 static 和 非 static；　泛型類別只能用在非 static
  */
 public class GenericTest<P, Q, R> {
@@ -12,5 +13,12 @@ public class GenericTest<P, Q, R> {
 
     public <R> R getR(R r) { // 泛型方法的名稱和泛型類別的名稱相衝突時，以泛型方法為主
         return r;
+    }
+
+    public static void main(String[] args) {
+        GenericTest<String, Integer, byte[]> genericTest = new GenericTest<>();
+        genericTest.<String>getP("");
+
+        GenericTest.<Integer>getS(8);
     }
 }
