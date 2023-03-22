@@ -25,6 +25,7 @@
 + 靜態塊 static block
 + 塊 block
 ### 九、類別 class
++ 兄弟類別 
 + 內部類別 inner class
 + 靜態類別 static class
 + 匿名類別 anonymous class
@@ -33,7 +34,6 @@
 + 內外相同變數名稱的存取
 1. 由內而外
 2. 類別名稱.this
-+ 方法裡的類別
 + 類別陣列
 ### 十、抽象 abstract
 + 類別

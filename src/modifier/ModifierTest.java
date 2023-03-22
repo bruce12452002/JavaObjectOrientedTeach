@@ -38,6 +38,6 @@ public class ModifierTest {
 
 class NextClass {
     public static void main(String[] args) {
-//         new ModifierTest().test4(); // 相鄰類別調用不到 private
+//         new ModifierTest().privateMethod(); // 相鄰類別調用不到 private
     }
 }
