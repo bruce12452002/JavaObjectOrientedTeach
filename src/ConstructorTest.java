@@ -8,13 +8,15 @@ public class ConstructorTest extends ConstructorPapaTest {
     public ConstructorTest() { // 預設建構子，如果沒寫建構子就有這一組；有的話就消失了，除非顯示的寫出來
         super(); // 建構子裡 this 和 super 只能寫其一
         // this("");
+        return; // return 可省略
     }
 
     private ConstructorTest(String s) {
         this(s, 1);
+//        this(""); // 建構子不可使用 recursive
     }
 
     public ConstructorTest(String s, int i) {
-
     }
+
 }
