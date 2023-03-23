@@ -41,4 +41,26 @@ public class OverloadingTest {
     public static void xxx(Object x) {
         System.out.println("Object");
     }
+
+    private static class TripleDotTest {
+        public static void main(String[] args) {
+            xxx("", "", ""); // 以全部找到為主，都沒有才會找 ...
+        }
+
+        public static void xxx() {
+        }
+
+        public static void xxx(String... s) {
+        }
+
+//        public static void xxx(String[] s) {  // 陣列和 ... 只能擇其一； 陣列一定要傳值，... 可不傳
+//        }
+
+        public static void xxx(String s) {
+        }
+
+
+        public static void xxx(String s1, String s2) {
+        }
+    }
 }
