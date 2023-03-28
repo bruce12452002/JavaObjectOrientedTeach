@@ -3,6 +3,7 @@ package inherit;
 /**
  * extends 最多能一個
  * implements 可以多個
+ * 就算都沒有寫，至少也有一個父類別 Object
  * <p>
  * ※ 父類、父介面必需有 package 才能被繼承或實作，如果沒有 package，只能被沒 package 繼承或實作
  */

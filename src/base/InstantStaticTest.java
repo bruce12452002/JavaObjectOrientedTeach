@@ -1,3 +1,5 @@
+package base;
+
 public class InstantStaticTest {
     static int i = 5;
     int j = 6;

@@ -1,3 +1,5 @@
+package base;
+
 public class ObjectTest {
     public static void main(String[] args) {
         new Object();

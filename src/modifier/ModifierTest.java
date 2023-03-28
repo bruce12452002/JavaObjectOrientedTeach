@@ -4,6 +4,12 @@ package modifier;
  * 修飾子：表示誰可以調用我
  */
 public class ModifierTest {
+    public static int number = 888;
+
+    public static int getNumber() {
+        return number;
+    }
+
     public void publicMethod() { // 同個 project
     }
 

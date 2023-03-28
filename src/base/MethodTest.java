@@ -1,3 +1,5 @@
+package base;
+
 public class MethodTest {
     /**
      * 修飾子 [靜態 final] [泛型] 回傳值 方法名稱(參數){}

@@ -1,3 +1,5 @@
+package constructor;
+
 /**
  * 建構子名稱和類別名稱相同且沒有回傳值，連 void 也沒有
  */

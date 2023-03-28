@@ -1,3 +1,5 @@
+package base;
+
 public class BlockTest {
     public static void main(String[] args) {
         // static block 只會執行一次； block 每 new 一次就會執行一次

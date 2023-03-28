@@ -1,3 +1,5 @@
+package base;
+
 public class ClassThisTest {
     private int id;
 

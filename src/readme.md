@@ -60,7 +60,7 @@
 1. 基本型態陣列
 2. call by value 和 call by address
 3. call by reference
-4. =號和物件賦值
+4. Integer = 1 和 Integer i = new Integer(1) 的區別
 ### 十八、Object 類別
 ### 十九、例外 exception
 ### 二十、枚舉類別 enum

@@ -1,3 +1,5 @@
+package base;
+
 public class EncapsulationTest {
     private int id;
     private String name;
