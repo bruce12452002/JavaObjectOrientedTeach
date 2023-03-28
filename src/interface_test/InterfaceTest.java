@@ -5,7 +5,7 @@ package interface_test;
  * 可以使用 main 方法
  * 沒有預設建構子，但可以 new，只不過後面要加花括號和分號
  * 沒有 block、static block
- * default 有多繼承問題，且可以向建構子一樣，使用 this 和 super
+ * default 有多繼承問題，且可以向建構子一樣，使用 this，而 super 可解決多繼承問題
  */
 public interface InterfaceTest {
     int id = 5; // public static final

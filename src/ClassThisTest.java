@@ -2,7 +2,9 @@ public class ClassThisTest {
     private int id;
 
     public static void main(String[] args) {
-        new ClassThisTest().xxx();
+        ClassThisTest ctt = new ClassThisTest();
+        System.out.println(ctt);
+        ctt.xxx();
 
 //        ClassThisTest ooo = new ClassThisTest().ooo();
 //        System.out.println(ooo.id);
@@ -40,6 +42,12 @@ public class ClassThisTest {
 
         ClassThisTest t4 = new ClassThisTest();
         System.out.println(t4.id); // 0
+
+        // 除了 t4，其他記憶體位址都相同
+        System.out.println(t1);
+        System.out.println(t2);
+        System.out.println(t3);
+        System.out.println(t4);
     }
 
     private ClassThisTest ooo() {

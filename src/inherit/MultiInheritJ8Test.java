@@ -1,6 +1,6 @@
-package multi_inherit;
+package inherit;
 
-public class Java8Test implements I1, I2 {
+public class MultiInheritJ8Test implements I1, I2 {
     /**
      * 多繼承裡的父介面 default 方法名稱和參數一樣時，而且父介面沒有繼承關係，要自己實作
      */
@@ -11,7 +11,7 @@ public class Java8Test implements I1, I2 {
     }
 
     public static void main(String[] args) {
-        I1 i = new Java8Test();
+        I1 i = new MultiInheritJ8Test();
         i.f();
     }
 }

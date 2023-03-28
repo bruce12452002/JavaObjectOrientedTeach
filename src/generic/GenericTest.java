@@ -1,3 +1,5 @@
+package generic;
+
 /**
  * 泛型不可用基本類型
  * 泛型方法可以用在 static 和 非 static；　泛型類別只能用在非 static
