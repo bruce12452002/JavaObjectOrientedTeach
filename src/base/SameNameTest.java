@@ -1,3 +1,5 @@
+package base;
+
 public class SameNameTest {
     int i = 5;
 
