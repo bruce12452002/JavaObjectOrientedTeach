@@ -48,6 +48,7 @@
 ### 十四、繼承 inherit
 + 繼承 extends
 + 實作 implements
++ 多繼承
 + 重載 overloading
 1. 方法名稱一樣，參數不同，但不管回傳值
 + 覆寫 overriding
