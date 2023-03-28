@@ -1,6 +1,7 @@
 public class BlockTest {
     public static void main(String[] args) {
-        new BlockTest();
+        // static block 只會執行一次； block 每 new 一次就會執行一次
+        // new BlockTest();  // 這行註解，static block 也會執行
     }
 
     public BlockTest() {
