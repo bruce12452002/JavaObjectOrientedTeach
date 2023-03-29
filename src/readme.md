@@ -19,6 +19,7 @@
 ### 七、import keyword
 1. 同包不用 import
 2. import *
+3. import static
 ### 八、建構子 constructor
 + 預設建構子
 + this/super

@@ -4,6 +4,7 @@ import generic.GenericTest;
 
 import static modifier.ModifierTest.getNumber;
 import static modifier.ModifierTest.number;
+// import static modifier.ModifierTest.*; // import *
 import java.util.ArrayList;
 
 public class ImportTest {
