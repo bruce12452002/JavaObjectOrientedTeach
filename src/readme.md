@@ -31,6 +31,8 @@
 + 靜態類別 static class
 + 匿名類別 anonymous class
 + 方法類別 method class
++ record 類別(java 16)
++ sealed 類別(java 17)
 > 查看 class 檔名
 + 內外相同變數名稱的存取
 1. 由內而外
@@ -40,7 +42,7 @@
 + 類別
 + 方法/函數
 ### 十一、介面 interface
-+ JDK8
++ JAVA 8
 1. static
 2. default
 ### 十二、final
@@ -54,6 +56,7 @@
 1. 方法名稱一樣，參數不同，但不管回傳值
 + 覆寫 overriding
 1. 方法名稱、參數、回傳值都要一樣，但回傳值可以是子類別，參數不能是子類別
+2. 如果有 throws 都可以不寫，如果要寫只能是 throws 的子類別或一樣
 ### 十五、多型 polymorphism
 + instanceof JDK16
 ### 十六、Java API

@@ -1,8 +1,5 @@
 package clazz.seal;
 
-import base.ImportTest;
-import clazz.AnonymousClass;
-
 /**
  * Java 17 功能
  * 密封類別：表示誰可以繼承我
