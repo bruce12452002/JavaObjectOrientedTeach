@@ -33,6 +33,10 @@ public class EnumTest {
 //        ELEPHANT, JUMP, LOOP;
 //    }
 
+    /**
+     * 不可以 new enum
+     * 調用時，類別直接.即可
+     */
     enum Chess {
         ELEPHANT(100, "象棋"), JUMP(101, "跳棋"), LOOP(102, "圍棋");
 

@@ -27,6 +27,7 @@ abstract class Papa {
  * 覆寫時，修飾子可以一樣或更大
  * 回傳值可以是子類別
  * 參數不可是子類別
+ * throws 可以是 RuntimeException 以下類別
  *
  * @Override 表示此方法是覆寫方法
  */
