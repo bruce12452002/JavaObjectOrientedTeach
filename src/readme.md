@@ -71,3 +71,10 @@
 ### 二十一、泛型 generic
 ### 二十二、Annotation
 ### 二十三、反射 reflection
+### 二十四、lambda
++ () -> {}
+### 二十五、method reference
++ Object::method
+### 二十六、Stream
++ 水龍頭
++ 中間操作、終止操作

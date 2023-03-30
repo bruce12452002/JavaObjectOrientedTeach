@@ -1,7 +1,7 @@
 package interface_test;
 
 /**
- * default 和 static 是 java8 之後才有的，且都要實作
+ * default 和 static 是 java8 之後才有的，且都要實作，都有隱含的 public
  * 可以使用 main 方法
  * 沒有預設建構子，但可以 new，只不過後面要加花括號和分號
  * 沒有 block、static block
