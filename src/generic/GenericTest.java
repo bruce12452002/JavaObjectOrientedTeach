@@ -17,10 +17,16 @@ public class GenericTest<P, Q, R> {
         return r;
     }
 
+    public <T, U> T[] getArray(T[] t, int[] u) { // 泛型裡不能放基本型態，所以以 T[] 自然就不能放 int[]…等的陣列
+        return t;
+    }
+
     public static void main(String[] args) {
         GenericTest<String, Integer, byte[]> genericTest = new GenericTest<>();
-        genericTest.<String>getP("");
+        genericTest.<String>getP(""); // 泛型可省略
+        genericTest.getArray(new Integer[]{1, 2, 3}, new int[]{});
 
         GenericTest.<Integer>getS(8);
+
     }
 }
