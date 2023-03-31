@@ -1,4 +1,4 @@
-package base;
+package object;
 
 public class ObjectTest {
     public static void main(String[] args) {
