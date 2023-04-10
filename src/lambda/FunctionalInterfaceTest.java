@@ -24,7 +24,7 @@ public interface FunctionalInterfaceTest {
         System.out.println(f2.getString());
 
         // 省略寫法三之一
-        // 如果只需要一行，就不用花括號，連 return 關鍵字也不能有(不管有沒有回傳值都不能寫)
+        // 如果只需要一行，就不用花括號和;，而且連 return 關鍵字也不能有(不管有沒有回傳值都不能寫)
         FunctionalInterfaceTest f3 = () -> "ooo";
     }
 }

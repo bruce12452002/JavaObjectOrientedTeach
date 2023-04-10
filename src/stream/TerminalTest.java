@@ -11,9 +11,20 @@ import java.util.stream.Stream;
 
 public class TerminalTest {
     public static void main(String[] args) {
+//        process();
 //        collect();
 //        count();
-        joining();
+//        joining();
+    }
+
+    private static void process() {
+        Stream.of(1, 2, 3).filter(i -> {
+            System.out.println("filter");
+            return i >= 2;
+        }).map(i -> {
+            System.out.println("map");
+            return i + "xxx";
+        }).forEach(System.out::println);
     }
 
     private static void joining() {
@@ -33,6 +44,12 @@ public class TerminalTest {
     private static void count() {
         long count = Stream.of(1, 2, 3).count();
         System.out.println("count=" + count);
+
+        // JAVA 9 以上(包括9)，peek 和 count 連用時，peek 不生效，這是 9 的優化(如果可以從 Stream 中計算 count，就不會執行 peek)
+        // 如果要強制使 peek 有作用，可用 filter 或其他終端操作，如 collect
+        long rtn = Stream.of("a", "b", "c").peek(System.out::println).count();
+        System.out.println("rtn=" + rtn);
+        Stream.of("a", "b", "c").filter(i -> true).peek(System.out::println).count(); // peek 會執行
     }
 
     private static void collect() {
