@@ -9,12 +9,13 @@ import java.util.stream.Stream;
 public class TerminalTest {
     public static void main(String[] args) {
 //        process();
-//        collect();
-//        count();
 //        joining();
+//        count();
+//        collect();
 //        foreachOrdered();
+//        minAndMax();
+        statistics();
 //        reduce();
-        minAndMax();
     }
 
     private static void process() {
@@ -82,6 +83,11 @@ public class TerminalTest {
 
     private static void statistics() {
         IntSummaryStatistics result = Stream.of(1, 2, 3, 4, 5).mapToInt(i -> i).summaryStatistics();
+        System.out.println("最大值=" + result.getMax());
+        System.out.println("最小值=" + result.getMin());
+        System.out.println("加總=" + result.getSum());
+        System.out.println("幾個元素=" + result.getCount());
+        System.out.println("平均值=" + result.getAverage());
     }
 
     private static void reduce() {
