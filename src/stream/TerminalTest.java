@@ -1,10 +1,7 @@
 package stream;
 
 
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -15,6 +12,9 @@ public class TerminalTest {
 //        collect();
 //        count();
 //        joining();
+//        foreachOrdered();
+//        reduce();
+        minAndMax();
     }
 
     private static void process() {
@@ -64,5 +64,66 @@ public class TerminalTest {
         System.out.println("list ==> " + list);
         System.out.println("set ==> " + set);
         System.out.println("map ==> " + map);
+    }
+
+    private static void foreachOrdered() {
+        // 多執行緒時，兩者才有差別
+        Stream.of(138, 785, 8, 81, 1, 99, 888).parallel().forEachOrdered(System.out::println);
+        System.out.println("===============");
+        Stream.of(138, 785, 8, 81, 1, 99, 888).parallel().forEach(System.out::println);
+    }
+
+    private static void minAndMax() {
+        Optional<Integer> min = Stream.of(1, 2, 3, 4, 5).min(Comparator.comparing(p -> p));
+        Optional<Integer> max = Stream.of(1, 2, 3, 4, 5).max(Comparator.comparing(p -> p));
+        System.out.println(min.get());
+        System.out.println(max.get());
+    }
+
+    private static void statistics() {
+        IntSummaryStatistics result = Stream.of(1, 2, 3, 4, 5).mapToInt(i -> i).summaryStatistics();
+    }
+
+    private static void reduce() {
+        // 一個參數 (p1 為第一次或累加的值；p2 為第二個值之後每次循環的值，所以如果有 5 個值，會跑 4 圈)
+        Optional<Integer> rtn1 = Stream.of(1, 2, 3, 4, 5).reduce((p1, p2) -> {
+            System.out.println("p1=" + p1 + ",p2=" + p2);
+            return p1 + p2;
+        });
+        System.out.println(rtn1.get());
+
+        // 兩個參數 (第一個參數為初始值，第二個參數和一個參數一樣)
+        Integer rtn2 = Stream.of(1, 2, 3, 4, 5).reduce(10, (p1, p2) -> {
+            System.out.println("p1=" + p1 + ",p2=" + p2);
+            return p1 + p2;
+        });
+        System.out.println(rtn2);
+
+        System.out.println("=============== 多線程 ===============");
+        Optional<Integer> rtnA = Stream.of(1, 2, 3, 4, 5).parallel().reduce((p1, p2) -> {
+            System.out.println("p1=" + p1 + ",p2=" + p2);
+            return p1 + p2;
+        });
+        System.out.println(rtnA.get());
+
+        // 兩個參數 (第一個參數為初始值，第二個參數和一個參數一樣)
+        // 多線程時，每次都會加初始值
+        Integer rtnB = Stream.of(1, 2, 3, 4, 5).parallel().reduce(10, (p1, p2) -> {
+            System.out.println("p1=" + p1 + ",p2=" + p2);
+            return p1 + p2;
+        });
+        System.out.println(rtnB);
+
+        // 第三個參數只有在多執行緒才會跑，如果不用多執行緒，那和兩個參數一樣
+        // 多執行緒時，前兩個參數每個迴圈都是一個執行緒，第三個參數用來合併多執行緒計算的結果
+        // 三個參數 (前兩個參數和之前一樣，最後的參數是 BinaryOperator「給兩個參數回傳一個值，這三個類型都必需一樣」)
+        Integer rtnC = Stream.of(1, 2, 3, 4, 5).parallel().reduce(0, (p1, p2) -> {
+            System.out.println("p1=" + p1 + ",p2=" + p2);
+            return p1 + p2;
+        }, (p1, p2) -> {
+            System.out.println("p3_1=" + p1 + ",p3_2=" + p2);
+            return p1 * p2;
+        });
+        System.out.println(rtnC);
     }
 }
