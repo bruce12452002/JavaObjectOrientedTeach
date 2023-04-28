@@ -8,7 +8,7 @@ public class ConstructorTest extends ConstructorPapaTest {
     }
 
     public ConstructorTest() { // 預設建構子，如果沒寫建構子就有這一組；有的話就消失了，除非顯示的寫出來
-        super(); // 建構子裡 this 和 super 只能寫其一
+        super(); // 建構子裡 this 和 super 只能寫其一；如果類別沒有繼承，會到 Object 裡找
         // this("");
         return; // return 可省略
     }
