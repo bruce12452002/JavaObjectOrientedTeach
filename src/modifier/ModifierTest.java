@@ -36,7 +36,7 @@ public class ModifierTest {
 
     private void method() {
         class MethodClass {
-            // Java 16 可在方法裡的類別增加 static 方法
+            // Java 16 可在匿名類別(非靜態)裡增加 static 方法，靜態原本就可以
             public static void main(String[] args) {
                 new ModifierTest().privateMethod(); // 方法類別可以調用到 private
             }
