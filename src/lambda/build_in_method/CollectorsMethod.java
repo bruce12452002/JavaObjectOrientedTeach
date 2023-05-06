@@ -1,7 +1,9 @@
 package lambda.build_in_method;
 
-import java.util.List;
+import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class CollectorsMethod {
     private static final List<Integer> LIST = List.of(1, 2, 3, 4);
@@ -12,17 +14,17 @@ public class CollectorsMethod {
 //        averagingXxx();
 //        collectingAndThen();
 //        maxByAndMinBy();
-        summingXxx();
+//        summingXxx();
+//        summarizingXxx();
+//        mapping();
+        groupingBy();
 
         // TODO
 //        Collectors.filtering();
-//        Collectors.groupingBy();
 //        Collectors.flatMapping();
-//        Collectors.mapping();
 //        Collectors.partitioningBy();
 //        Collectors.reducing();
-//        Collectors.summarizingInt();
-//        Collectors.teeing();
+//        Collectors.teeing(); java12
 //        Collectors.toConcurrentMap();
 //        Collectors.toUnmodifiableMap();
     }
@@ -86,4 +88,55 @@ public class CollectorsMethod {
         System.out.println(LIST.stream().collect(Collectors.summingDouble(d -> d)));
         System.out.println((Double) LIST.stream().mapToDouble(d -> d).sum());
     }
+
+    private static void summarizingXxx() {
+        IntSummaryStatistics summaryInt = LIST.stream().collect(Collectors.summarizingInt(i -> i));
+        LongSummaryStatistics summaryLong = LIST.stream().collect(Collectors.summarizingLong(l -> l));
+        DoubleSummaryStatistics summaryDouble = LIST.stream().collect(Collectors.summarizingDouble(d -> d));
+
+        IntSummaryStatistics summaryInt2 = Stream.of(5, 6, 7).collect(Collectors.summarizingInt(i -> i));
+        summaryInt.combine(summaryInt2);
+        System.out.println(summaryInt.getSum());
+        System.out.println(summaryInt2.getSum()); // 不影響 summaryInt2
+    }
+
+    private static void mapping() {
+        List<String> list = List.of("a", "b", "c", "d");
+        System.out.println(list.stream().collect(
+                Collectors.mapping(Function.identity(),
+                        Collectors.joining(","))));
+
+        System.out.println(list.stream().map(Function.identity())
+                .collect(Collectors.joining(",")));
+
+        List<Student> students = Student.getStudents();
+        System.out.println(students.stream().collect(
+                Collectors.mapping(Student::getName, Collectors.joining(","))));
+
+        System.out.println(students.stream().map(Student::getName)
+                .collect(Collectors.joining(",")));
+    }
+
+    private static void groupingBy() {
+        List<Student> students = List.of(
+                new Student(1, "monkey", "男"),
+                new Student(2, "monkey", "女"),
+                new Student(3, "dog", "男"),
+                new Student(4, "dog", "男")
+        );
+        Map<String, List<Student>> map1 = students.stream().collect(Collectors.groupingBy(Student::getName));
+        System.out.println(map1);
+
+        Map<String, String> map2 = students.stream().collect(Collectors.groupingBy(
+                Student::getName,
+                Collectors.mapping(Student::getSex, Collectors.joining(",")))); // 預設是 Collectors.toList()
+        System.out.println(map2);
+
+        Map<String, Map<String, List<Student>>> map3 = students.stream().collect(Collectors.groupingBy(
+                Student::getName,
+                TreeMap::new, // 預設是 HashMap
+                Collectors.groupingBy(Student::getSex))); // 預設是 Collectors.toList()
+        System.out.println(map3);
+    }
+
 }

@@ -23,33 +23,6 @@ public class UnaryOperatorMethod {
         List<Student> students = Student.getStudents();
         Optional<Student> result = students.stream()
                 .reduce(BinaryOperator.maxBy(Comparator.comparing(Student::getId)));
-        System.out.println(result.get().id);
+        System.out.println(result.get().getId());
     }
-
-    private static class Student {
-        private int id;
-        private String name;
-
-        public Student(int id, String name) {
-            this.id = id;
-            this.name = name;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public static List<Student> getStudents() {
-            return List.of(
-                    new Student(100, "monkey"),
-                    new Student(1, "dog"),
-                    new Student(10, "dragon")
-            );
-        }
-    }
-
 }
