@@ -1,6 +1,7 @@
 package lambda.build_in_method;
 
 import java.util.*;
+import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -17,14 +18,14 @@ public class CollectorsMethod {
 //        summingXxx();
 //        summarizingXxx();
 //        mapping();
-        groupingBy();
+//        flatMapping();
+//        groupingBy();
+//        filtering();
+//        partitioningBy();
+//        reducing();
+        teeing();
 
         // TODO
-//        Collectors.filtering();
-//        Collectors.flatMapping();
-//        Collectors.partitioningBy();
-//        Collectors.reducing();
-//        Collectors.teeing(); java12
 //        Collectors.toConcurrentMap();
 //        Collectors.toUnmodifiableMap();
     }
@@ -117,6 +118,16 @@ public class CollectorsMethod {
                 .collect(Collectors.joining(",")));
     }
 
+    private static void flatMapping() {
+        Map<Integer, List<Integer>> map = Stream.of(LIST, List.of(5, 6, 7, 8)).collect(
+                Collectors.groupingBy(Collection::size,
+                        Collectors.flatMapping(
+                                l -> l.stream().filter(i -> i % 2 == 0),
+                                Collectors.toList())
+                ));
+        System.out.println(map);
+    }
+
     private static void groupingBy() {
         List<Student> students = List.of(
                 new Student(1, "monkey", "男"),
@@ -124,14 +135,17 @@ public class CollectorsMethod {
                 new Student(3, "dog", "男"),
                 new Student(4, "dog", "男")
         );
+        System.out.println("===== 一個參數 =====");
         Map<String, List<Student>> map1 = students.stream().collect(Collectors.groupingBy(Student::getName));
         System.out.println(map1);
 
+        System.out.println("===== 兩個參數 =====");
         Map<String, String> map2 = students.stream().collect(Collectors.groupingBy(
                 Student::getName,
                 Collectors.mapping(Student::getSex, Collectors.joining(",")))); // 預設是 Collectors.toList()
         System.out.println(map2);
 
+        System.out.println("===== 三個參數 =====");
         Map<String, Map<String, List<Student>>> map3 = students.stream().collect(Collectors.groupingBy(
                 Student::getName,
                 TreeMap::new, // 預設是 HashMap
@@ -139,4 +153,68 @@ public class CollectorsMethod {
         System.out.println(map3);
     }
 
+    private static void filtering() {
+        System.out.println(LIST.stream().collect(Collectors.filtering(i -> i % 2 == 0, Collectors.toList())));
+    }
+
+    private static void partitioningBy() {
+        // 沒給第二個參數，預設為 Collectors.toList()
+        Map<Boolean, List<Integer>> map1 = LIST.stream().collect(Collectors.partitioningBy(i -> i % 2 == 0));
+
+        Map<Boolean, Set<Integer>> map2 = LIST.stream().collect(
+                Collectors.partitioningBy(i -> i % 2 == 0, Collectors.toSet()));
+        System.out.println(map1);
+        System.out.println(map2);
+    }
+
+    private static void reducing() {
+        System.out.println("===== 一個參數 =====");
+        // 第一次，p2 - p1 的結果，放在下次的第二個參數
+        // 第二次之後，p1 跑迴圈讓 p2 去減，再放在下一次的第二個參數
+        System.out.println(LIST.stream().collect(Collectors.reducing((p1, p2) -> {
+            System.out.println(p2 + "," + p1 + "=" + (p2 - p1));
+            return p2 - p1;
+        })));
+        System.out.println(LIST.stream().reduce((p1, p2) -> p2 - p1).orElse(-1));
+
+        System.out.println("===== 兩個參數 =====");
+        // 第一次，p2 為 10，之後都和一個參數一樣
+        System.out.println(LIST.stream().collect(Collectors.reducing(10, (p1, p2) -> {
+            System.out.println(p2 + "," + p1 + "=" + (p2 - p1));
+            return p2 - p1;
+        })));
+        System.out.println(LIST.stream().reduce(10, (p1, p2) -> p2 - p1));
+
+        System.out.println("===== 三個參數 =====");
+        // 三個參數時，中間多個轉換的操作
+        System.out.println(LIST.stream().collect(Collectors.reducing("",
+                x -> Integer.toString(x),
+                (p1, p2) -> p1 + p2)));
+        System.out.println(LIST.stream().map(x -> Integer.toString(x)).reduce("", (p1, p2) -> p1 + p2));
+
+        System.out.println("===== 和 groupingBy 連用 =====");
+        List<Student> students = List.of(
+                new Student(1, "monkey", "男"),
+                new Student(2, "monkey", "女"),
+                new Student(3, "dog", "男"),
+                new Student(4, "dog", "男")
+        );
+        Map<String, Optional<Student>> map = students.stream().collect(Collectors.groupingBy(
+                Student::getName,
+                Collectors.reducing(BinaryOperator.minBy(Comparator.comparing(Student::getId))))
+        );
+
+        map.forEach((k, v) -> System.out.println(k + "=" + v.get().getId()));
+    }
+
+    /**
+     * Java 12
+     */
+    private static void teeing() {
+        Double d = LIST.stream().collect(Collectors.teeing(
+                Collectors.summingDouble(i -> i),
+                Collectors.counting(),
+                (sum, n) -> sum / n));
+        System.out.println(d);
+    }
 }
