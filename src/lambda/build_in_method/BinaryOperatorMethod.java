@@ -8,7 +8,7 @@ import java.util.function.BinaryOperator;
 /**
  * maxBy minBy 兩個參數取最大或最小
  */
-public class UnaryOperatorMethod {
+public class BinaryOperatorMethod {
     public static void main(String[] args) {
         BinaryOperator<Integer> bo1 = BinaryOperator.maxBy(Integer::compare);
         System.out.println(bo1.apply(10, 20));
