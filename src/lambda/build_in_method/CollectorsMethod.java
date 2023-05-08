@@ -10,6 +10,7 @@ public class CollectorsMethod {
     private static final List<Integer> LIST = List.of(1, 2, 3, 4);
 
     public static void main(String[] args) {
+        toUnmodifiableXxx();
 //        counting();
 //        joining();
 //        averagingXxx();
@@ -23,11 +24,27 @@ public class CollectorsMethod {
 //        filtering();
 //        partitioningBy();
 //        reducing();
-        teeing();
+//        teeing();
+    }
 
-        // TODO
-//        Collectors.toConcurrentMap();
-//        Collectors.toUnmodifiableMap();
+    /**
+     * Unmodifiable 不可改變元素內容和大小(增刪)
+     */
+    private static void toUnmodifiableXxx() {
+        Set<Integer> set = Stream.of(1, 2, 3, 4, 5).collect(Collectors.toSet());
+        List<Integer> immutableList1 = set.stream().collect(Collectors.toUnmodifiableList());
+        List<Integer> immutableList2 = set.stream().toList();
+
+        Set<Integer> immutableSet = set.stream().collect(Collectors.toUnmodifiableSet());
+
+        Map<Integer, Integer> map1 = set.stream().collect(Collectors.toUnmodifiableMap(
+                Function.identity(), Function.identity()));
+
+        Map<Employee.Gender, String> map2 = Employee.getPersons().stream().collect(Collectors.toUnmodifiableMap(
+                Employee::getGender,
+                Employee::getName,
+                (oldV, newV) -> String.join(", ", oldV, newV)
+        ));
     }
 
     private static void counting() {
@@ -216,5 +233,40 @@ public class CollectorsMethod {
                 Collectors.counting(),
                 (sum, n) -> sum / n));
         System.out.println(d);
+    }
+
+    private static class Employee {
+        public static enum Gender {
+            MALE, FEMALE
+        }
+
+        private long id;
+        private String name;
+        private Gender gender;
+
+        public Employee(long id, String name, Gender gender) {
+            this.id = id;
+            this.name = name;
+            this.gender = gender;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public Gender getGender() {
+            return gender;
+        }
+
+        public static List<Employee> getPersons() {
+            return Arrays.asList(
+                    new Employee(1, "Jake", Gender.MALE),
+                    new Employee(2, "Jack", Gender.MALE),
+                    new Employee(3, "Jane", Gender.FEMALE),
+                    new Employee(4, "Jade", Gender.MALE),
+                    new Employee(5, "Jenny", Gender.FEMALE),
+                    new Employee(6, "Jason", Gender.MALE)
+            );
+        }
     }
 }
