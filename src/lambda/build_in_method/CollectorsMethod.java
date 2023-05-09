@@ -20,7 +20,7 @@ public class CollectorsMethod {
 //        summarizingXxx();
 //        mapping();
 //        flatMapping();
-//        groupingBy();
+//        groupingByAndGroupingByConcurrent();
 //        filtering();
 //        partitioningBy();
 //        reducing();
@@ -145,7 +145,7 @@ public class CollectorsMethod {
         System.out.println(map);
     }
 
-    private static void groupingBy() {
+    private static void groupingByAndGroupingByConcurrent() {
         List<Student> students = List.of(
                 new Student(1, "monkey", "男"),
                 new Student(2, "monkey", "女"),
@@ -168,6 +168,9 @@ public class CollectorsMethod {
                 TreeMap::new, // 預設是 HashMap
                 Collectors.groupingBy(Student::getSex))); // 預設是 Collectors.toList()
         System.out.println(map3);
+
+        // Collectors.groupingByConcurrent() 用法和 toMap 一樣
+        // 差在預設是 ConcurrentHashMap，如果使用三個參數的方法時，第二個參數一定要繼承 ConcurrentMap
     }
 
     private static void filtering() {
