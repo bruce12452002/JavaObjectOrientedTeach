@@ -8,9 +8,12 @@ public class ClassThisTest {
         System.out.println(ctt);
         ctt.xxx();
 
+        // 同樣的記憶體位置 ooo，使用 ClassThisTest.this 都會是相同的實體
+        // 但 new 類別為新的位置，所以 ooo.abc() 和 new ClassThisTest().abc() 是不同的實體
 //        ClassThisTest ooo = new ClassThisTest().ooo();
 //        System.out.println(ooo.id);
 //        ooo.abc();
+//        new ClassThisTest().abc();
 
     }
 
