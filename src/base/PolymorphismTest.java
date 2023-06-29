@@ -22,9 +22,13 @@ public class PolymorphismTest {
         if (i instanceof I) {
             System.out.println("i");
         }
+
+//        getHi(new I());
     }
 
-
+    private static void getHi(GrandPapa p) {
+        p.hi();
+    }
 }
 
 
