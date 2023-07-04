@@ -2,12 +2,12 @@ package base;
 
 /**
  * 一
- * 以 short 為例：
+ * 以 short 為例(基本型態會自動往上轉，如 byte short int long)：
  * 順序如下：
- * short --> int --> Short --> Integer --> Object
+ * short --> int --> long --> Short --> Object
  * int 並不會轉成 char；但 char 會轉成 int
  * <p>
- * 又以 Short 為例
+ * 又以 Short 為例(非基本型態如果沒有直接轉物件):
  * 順序如下：
  * Short --> Object --> short --> int
  * <p>
