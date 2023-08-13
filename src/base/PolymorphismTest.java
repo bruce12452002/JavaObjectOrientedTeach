@@ -26,8 +26,21 @@ public class PolymorphismTest {
 //        getHi(new I());
     }
 
+    /**
+     * 傳參數的多型
+     */
     private static void getHi(GrandPapa p) {
         p.hi();
+    }
+
+    /**
+     * 回傳值的多型
+     */
+    private static GrandPapa get() {
+//        return new I();
+
+        Father f = new I();
+        return f; // return 仍然是 GrandPapa x = new I();
     }
 }
 
