@@ -31,4 +31,13 @@ public interface InterfaceTest {
 //     void m1(); // public abstract，正常方法不可實作
 
     String m2();
+
+    /**
+     * java 9(含)以上，可以在 interface 裡寫 private 實作方法，也可以是 overloading
+     */
+    private void privateMethod() {
+    }
+
+    private void privateMethod(String s) {
+    }
 }
