@@ -10,4 +10,16 @@ public class ProtectedTest extends ModifierTest {
 //        new ModifierTest().defaultMethod();
 
     }
+
+    void xxx() {
+        // new ModifierTest().protectedMethod();
+        // new ProtectedTest().protectedMethod();
+
+        super.protectedMethod();
+        this.protectedMethod();
+        protectedMethod();
+    }
+
+    public void protectedMethod() {
+    }
 }
