@@ -11,10 +11,14 @@ public class BlockTest {
     }
 
     {
+        new ClassThisTest();
+        // BlockTest blockTest = new BlockTest();// new 自己會不斷的調用這裡寫的，直到 StackOverflowError
         System.out.println("non-static 1");
     }
 
     static {
+        new ClassThisTest();
+        // BlockTest blockTest = new BlockTest();// new 自己會不斷的調用這裡寫的，直到 StackOverflowError
         System.out.println("static 1");
     }
 
