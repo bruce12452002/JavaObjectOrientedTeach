@@ -2,6 +2,9 @@ package constructor;
 
 /**
  * 建構子名稱和類別名稱相同且沒有回傳值，連 void 也沒有
+ *
+ * 如果父類建構子是 private 就不能繼承了
+ * 不能繼承還可用 final class
  */
 public class ConstructorTest extends ConstructorPapaTest {
     public void ConstructorTest() { // 因為有回傳值 void，所以這個是方法，但方法名稱和類別名稱相同，所以會有警告
